@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 
-get_filename_component(LIBUSB_ROOT "libusb/libusb" ABSOLUTE)
+get_filename_component(LIBUSB_ROOT "libusb" ABSOLUTE)
 
 # Get the version information from version.h ignoring the nano version as it appears in version_nano.h and so we need it?
 file(READ "${LIBUSB_ROOT}/version.h" VERSIONHEADERDATA)
