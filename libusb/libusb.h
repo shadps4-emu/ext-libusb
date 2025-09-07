@@ -2404,7 +2404,8 @@ void LIBUSB_CALL libusb_hotplug_deregister_callback(libusb_context *ctx,
 void * LIBUSB_CALL libusb_hotplug_get_user_data(libusb_context *ctx,
 	libusb_hotplug_callback_handle callback_handle);
 
-int LIBUSB_CALLV libusb_set_option(libusb_context *ctx, enum libusb_option option, ...);
+// NOTE: Removed LIBUSB_CALLV since SysV ABI cannot be used with va_list.
+int /*LIBUSB_CALLV*/ libusb_set_option(libusb_context *ctx, enum libusb_option option, ...);
 
 #ifdef _MSC_VER
 #pragma warning(pop)
