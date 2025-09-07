@@ -118,13 +118,9 @@ typedef SSIZE_T ssize_t;
  * return type, before the function name. See internal documentation for
  * API_EXPORTED.
  */
-#if defined(_WIN32) || defined(__CYGWIN__)
-#define LIBUSB_CALL WINAPI
-#define LIBUSB_CALLV WINAPIV
-#else
-#define LIBUSB_CALL
-#define LIBUSB_CALLV
-#endif /* _WIN32 || __CYGWIN__ */
+// Apply __attribute__((sysv_abi)) for PS4 compatibility.
+#define LIBUSB_CALL __attribute__((sysv_abi))
+#define LIBUSB_CALLV LIBUSB_CALL
 
 /** \def LIBUSB_API_VERSION
  * \ingroup libusb_misc

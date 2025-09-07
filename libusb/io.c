@@ -1719,10 +1719,7 @@ int usbi_handle_transfer_completion(struct usbi_transfer *itransfer,
 		 (void *) transfer, transfer->callback);
 	if (transfer->callback) {
 		libusb_lock_event_waiters (ctx);
-
-		typedef void sysv_callback_t(struct libusb_transfer*) __attribute__((sysv_abi));
-		((sysv_callback_t*)transfer->callback)(transfer);
-		
+		transfer->callback(transfer);
 		libusb_unlock_event_waiters(ctx);
 	}
 	/* transfer might have been freed by the above call, do not use from
